@@ -71,6 +71,9 @@ vectorMeanAndstd<-grepl("mean|std|Subject|ActivitiesLabels",
                         columnNamesPlusActivitiesAndSubject,ignore.case=T)
 rawDataShorter<-rawData[,vectorMeanAndstd]
 freqOrGravityMean<-grepl("meanFreq|gravityMean|AccelerationMean",colnames(rawDataShorter))
+#reversing vector (changing true for false and false for true) containing the info
+#on gravity and acceleration mean  and meanFreq so that it can be used to remove 
+#those columns from the dataset.
 finalColumnsVector<-rep(1,88)-freqOrGravityMean
 rawDataShort<-rawDataShorter[,as.logical(finalColumnsVector)]
 
@@ -98,7 +101,8 @@ rm(activitiesLabels)
 newColNames<-colnames(rawDataShort)
 newColNames<-gsub("tBody","timeBody",newColNames)
 newColNames<-gsub("tGravity","timeGravity",newColNames)
-newColNames<-gsub("Acc","Acceleration",newColNames)
+newColNames<-gsub("Acc","Accelerometer",newColNames)
+newColNames<-gsub("Gyro","Gyroscope",newColNames)
 newColNames<-gsub("fBody","frequencyBody",newColNames)
 newColNames<-gsub("Mag","Magnitude",newColNames)
 newColNames<-gsub("std..","std",newColNames, fixed=T)
@@ -110,7 +114,7 @@ colnames(rawDataShort)<-newColNames
 #From the data set in step 4, creates a second, independent tidy data set 
 #with the average of each variable for each activity and each subject.
 #Using dplyr package the data is grouped by Subject and Activities variables and then summarized.
-#The output is written into csv and print on screen.
+#The output is written into txt file.
 
 library(dplyr)
 data<-tbl_df(rawDataShort)
@@ -122,4 +126,3 @@ dataSummarized <- summarise_each(groupedBySubjectActivities,
 
 rm(data, groupedBySubjectActivities, newColNames)
 write.table(dataSummarized, file="dataSummarized.txt",row.names=F)
-colnames(dataSummarized)
