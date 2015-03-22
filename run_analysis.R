@@ -104,6 +104,7 @@ newColNames<-gsub("Mag","Magnitude",newColNames)
 newColNames<-gsub("std..","std",newColNames, fixed=T)
 newColNames<-gsub("mean..","mean",newColNames, fixed=T)
 
+colnames(rawDataShort)<-newColNames
 ###################################   Step 5
 
 #From the data set in step 4, creates a second, independent tidy data set 
@@ -121,4 +122,4 @@ dataSummarized <- summarise_each(groupedBySubjectActivities,
 
 rm(data, groupedBySubjectActivities, newColNames)
 write.table(dataSummarized, file="dataSummarized.txt",row.names=F)
-
+colnames(dataSummarized)
