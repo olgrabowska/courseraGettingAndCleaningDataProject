@@ -1,5 +1,5 @@
-﻿Codebook for Coursera Getting and Cleaning Data project
-==
+﻿##Codebook for Coursera 
+##Getting and Cleaning Data project
 
 All the variables in the dataset are calculated as averages for each activity and subject!
 

@@ -1,7 +1,6 @@
-﻿==
-Human Activity Recognition Using Smartphones Dataset 
-for Coursera Data Cleaning project
-==
+﻿
+##Human Activity Recognition Using Smartphones Dataset 
+##for Coursera Data Cleaning project
 
 
 Detailed description can be found in the run_analysis.R file. The R script called run_analysis.R works as follows: 
