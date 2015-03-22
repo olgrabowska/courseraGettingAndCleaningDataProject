@@ -1,5 +1,7 @@
 ﻿Codebook for Coursera Getting and Cleaning Data project
 
+All the variables in the dataset are calculated as averages for each activity and subject.
+
  [1] "Subject"     
         An identifier of the subject who carried out the experiment (one of 30 people).
         values: 1:30
